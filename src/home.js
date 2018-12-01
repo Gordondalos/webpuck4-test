@@ -1,6 +1,6 @@
 import * as app from './component/app';
 import './Module';
-import * as $ from 'jquery';
+// import * as $ from 'jquery'; не надо импортировать так как ProvidePlugin
 
 app.action();
 
