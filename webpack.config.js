@@ -7,6 +7,8 @@ const CaseSensitivePathsWebpackPlugin = require('case-sensitive-paths-webpack-pl
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 
+
+
 module.exports = {
 
     // указываем где лежит проект - абсолютный путь
@@ -49,7 +51,14 @@ module.exports = {
         // плагин проверки регистра файлов
         new CaseSensitivePathsWebpackPlugin(),
         // плагин уродывания js
-        new UglifyJsPlugin(),
+       // new UglifyJsPlugin(),
+
+        // Плагин делает глобальные переменные для проекта в нем определяются константы которые нужны в коде
+        new webpack.DefinePlugin({
+            VERS: JSON.stringify("0.0.2"),
+            PRODUCTION: false,
+            HTML5_SUPPORT: true,
+        })
     ]
 
 

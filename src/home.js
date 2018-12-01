@@ -4,6 +4,13 @@ import * as $ from 'jquery';
 
 app.action();
 
-$('body').html('Привет мир');
+$( 'body' ).html( 'Привет мир' );
 
-console.log('Home page');
+if ( !( PRODUCTION ) ) {
+    console.log( VERS );
+} else {
+    console.log( HTML5_SUPPORT );
+}
+
+
+console.log( 'Home page' );
