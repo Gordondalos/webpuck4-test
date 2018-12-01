@@ -17,7 +17,9 @@
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "case-sensitive-paths-webpack-plugin": "^2.1.2"
+  },
   "scripts": {
     "start": "webpack -d --watch",
     "run": "webpack -d",

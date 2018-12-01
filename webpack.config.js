@@ -1,6 +1,10 @@
 const webpack = require( 'webpack' );
 const path = require( 'path' );
 
+// Плагин для проверки регистра подключаемых файлов
+const CaseSensitivePathsWebpackPlugin = require('case-sensitive-paths-webpack-plugin');
+
+
 module.exports = {
 
     // указываем где лежит проект - абсолютный путь
@@ -35,7 +39,13 @@ module.exports = {
     },
 
     // по умолчанию фолс, если поставить true То будет запускать смотрение
-    watch: true
+    watch: true,
+
+
+    // для подключения плагина достаточно просто положить экземпляр плагина
+    plugins: [
+        new CaseSensitivePathsWebpackPlugin(),
+    ]
 
 
 };
