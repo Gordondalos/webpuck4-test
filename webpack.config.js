@@ -6,6 +6,9 @@ const CaseSensitivePathsWebpackPlugin = require('case-sensitive-paths-webpack-pl
 // Плагин уродывания js
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+// Плагин для работы с html
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 
 
@@ -62,6 +65,14 @@ module.exports = {
         // Плагин для провайда других либ оно не рекомендуется
         new webpack.ProvidePlugin({
             $: 'jquery' // если так либу удалить то ее можно не импортировать в файлах
+        }),
+
+        // создает и подключает файлы html
+        new HtmlWebpackPlugin({
+            title: 'Hello webpack',
+            hash: true, // кешируем подключаемые библиотеки
+            minify: true, // минификация html, смотри доку там много чего можно передать в минифай
+            template: './index.html' // создаем это из шаблона
         })
     ]
 
