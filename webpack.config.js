@@ -3,6 +3,8 @@ const path = require( 'path' );
 
 // Плагин для проверки регистра подключаемых файлов
 const CaseSensitivePathsWebpackPlugin = require('case-sensitive-paths-webpack-plugin');
+// Плагин уродывания js
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 
 module.exports = {
@@ -44,7 +46,10 @@ module.exports = {
 
     // для подключения плагина достаточно просто положить экземпляр плагина
     plugins: [
+        // плагин проверки регистра файлов
         new CaseSensitivePathsWebpackPlugin(),
+        // плагин уродывания js
+        new UglifyJsPlugin(),
     ]
 
 

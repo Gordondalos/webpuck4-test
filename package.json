@@ -1,5 +1,5 @@
 {
-  "name": "webpack",
+  "name": "webpack-test",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,12 +13,12 @@
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
-    "uglifyjs-webpack-plugin": "^2.0.1",
-    "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2"
   },
   "devDependencies": {
-    "case-sensitive-paths-webpack-plugin": "^2.1.2"
+    "case-sensitive-paths-webpack-plugin": "^2.1.2",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "webpack": "^4.26.1"
   },
   "scripts": {
     "start": "webpack -d --watch",
