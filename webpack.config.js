@@ -28,7 +28,7 @@ module.exports = {
         shop: './shop',
         profile: './profile',
         index: './index',
-       styles: './styles.css'
+        styles: './styles.scss'
     },
 
     // указать куда положить, или указать name в которое он подставит ключ из энтри
@@ -91,11 +91,30 @@ module.exports = {
     module: {
       rules: [
           {
-              test: /\.css$/,
+              test: /\.scss$/,
               use: ExtractTextPlugin.extract({
                   fallback: "style-loader",
-                  use: "css-loader"
-              })
+                  allChunks: true,
+                  use: [
+                      {
+                          loader: 'css-loader',
+                          options: {
+                              // If you are having trouble with urls not resolving add this setting.
+                              // See https://github.com/webpack-contrib/css-loader#url
+                              url: false,
+                              minimize: false,
+                              sourceMap: true
+                          }
+                      },
+                      {
+                          loader: 'sass-loader',
+                          options: {
+                              sourceMap: true
+                          }
+                      }
+                  ]
+
+              }),
           },
           {
             // регулярка для расширения
