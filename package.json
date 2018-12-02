@@ -27,7 +27,8 @@
     "style-loader": "^0.23.1",
     "typescript": "^3.2.1",
     "uglifyjs-webpack-plugin": "^2.0.1",
-    "webpack": "^4.26.1"
+    "webpack": "^4.26.1",
+    "webpack-dev-server": "^3.1.10"
   },
   "scripts": {
     "start": "webpack -d --watch",

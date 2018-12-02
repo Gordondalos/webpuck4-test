@@ -26,4 +26,4 @@ if ( !( PRODUCTION ) ) {
 }
 
 
-console.log( 'Home page' );
+console.log( 'Home page load' );
