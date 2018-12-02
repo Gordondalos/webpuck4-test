@@ -92,13 +92,24 @@ module.exports = {
     module: {
         rules: [
 
-            // лоадер по идее удаляет все консоли, то ли я криворукий, толи конфиг устарел - пока не работает
+            // лоадим картинку
+
+            {
+                test: /\.jpg$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[path][name].[ext]?[hash]' // указали путь для файла расширение и хеш
+                }
+            },
+
+            // удаляем лишние console.warn и алерты, можно и другое удалить
             {
                 test: /\.js$/,
                 loader: "strip-loader",
                 options: {
                     strip: [
-                        'console.*'
+                        'console.warn',
+                        'alert'
                     ]
                 }
             },
