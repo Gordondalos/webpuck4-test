@@ -9,6 +9,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // Плагин для работы с html
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const { CheckerPlugin } = require('awesome-typescript-loader');
+
 
 
 
@@ -23,6 +25,7 @@ module.exports = {
         home: './home', // можно например ключ home заменить на index
         shop: './shop',
         profile: './profile',
+        index: './index',
     },
 
     // указать куда положить, или указать name в которое он подставит ключ из энтри
@@ -40,8 +43,7 @@ module.exports = {
     // это указывает какие сущьности можно подключать без расширения
     resolve: {
         extensions: [
-            '.js',
-            '.html'
+            '.ts', '.tsx', '.js', '.jsx'
         ]
     },
 
@@ -75,30 +77,47 @@ module.exports = {
             template: './index.html' // создаем это из шаблона
         }),
 
+        // лоадер тайп скрипта
+       new CheckerPlugin(),
+
     ],
 
+    // загрузка лоадеров
+    module: {
+      rules: [
+          {
+            // регулярка для расширения
+            test: /\.ts$/,
+
+            // указываем какой лоадер будет сним работать
+            loader: 'awesome-typescript-loader'
+          }
+      ]
+    },
+
     optimization: {
-        splitChunks: {
-            chunks: 'async',
-            minSize: 30000,
-            maxSize: 0,
-            minChunks: 1,
-            maxAsyncRequests: 5,
-            maxInitialRequests: 3,
-            automaticNameDelimiter: '~',
-            name: true,
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10
-                },
-                default: {
-                    minChunks: 2,
-                    priority: -20,
-                    reuseExistingChunk: true
-                }
-            }
-        }
+        // непонятная фигня или не работает так делается оптисизация
+        // splitChunks: {
+        //     chunks: 'async',
+        //     minSize: 30000,
+        //     maxSize: 0,
+        //     minChunks: 1,
+        //     maxAsyncRequests: 5,
+        //     maxInitialRequests: 3,
+        //     automaticNameDelimiter: '~',
+        //     name: true,
+        //     cacheGroups: {
+        //         vendors: {
+        //             test: /[\\/]node_modules[\\/]/,
+        //             priority: -10
+        //         },
+        //         default: {
+        //             minChunks: 2,
+        //             priority: -20,
+        //             reuseExistingChunk: true
+        //         }
+        //     }
+        // }
     }
 
 
