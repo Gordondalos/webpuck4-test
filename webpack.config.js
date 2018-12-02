@@ -68,6 +68,8 @@ module.exports = {
             HTML5_SUPPORT: true,
         } ),
 
+        new webpack.HotModuleReplacementPlugin(),
+
         // Плагин для провайда других либ оно не рекомендуется
         new webpack.ProvidePlugin( {
             $: 'jquery' // если так либу удалить то ее можно не импортировать в файлах
@@ -87,6 +89,10 @@ module.exports = {
         new ExtractTextPlugin( '[name].css' ),
 
     ],
+
+    devServer: {
+        hot: true,
+    },
 
     // загрузка лоадеров
     module: {
