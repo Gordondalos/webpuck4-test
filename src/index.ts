@@ -10,6 +10,7 @@ class User implements  Person{
   constructor() {
     this.name = 'Petya';
     this.age = 40;
+    console.log(this.logInfo());
   }
 
   private logInfo () {

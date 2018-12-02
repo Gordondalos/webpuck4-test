@@ -9,6 +9,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // Плагин для работы с html
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 const { CheckerPlugin } = require('awesome-typescript-loader');
 
 
@@ -26,6 +28,7 @@ module.exports = {
         shop: './shop',
         profile: './profile',
         index: './index',
+       styles: './styles.css'
     },
 
     // указать куда положить, или указать name в которое он подставит ключ из энтри
@@ -78,7 +81,9 @@ module.exports = {
         }),
 
         // лоадер тайп скрипта
-       new CheckerPlugin(),
+        new CheckerPlugin(),
+
+        new ExtractTextPlugin('[name].css'),
 
     ],
 
@@ -86,9 +91,15 @@ module.exports = {
     module: {
       rules: [
           {
+              test: /\.css$/,
+              use: ExtractTextPlugin.extract({
+                  fallback: "style-loader",
+                  use: "css-loader"
+              })
+          },
+          {
             // регулярка для расширения
             test: /\.ts$/,
-
             // указываем какой лоадер будет сним работать
             loader: 'awesome-typescript-loader'
           }
