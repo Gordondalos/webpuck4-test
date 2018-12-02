@@ -90,6 +90,7 @@ module.exports = {
     // загрузка лоадеров
     module: {
       rules: [
+          // работа с sass
           {
               test: /\.scss$/,
               use: ExtractTextPlugin.extract({
@@ -116,6 +117,8 @@ module.exports = {
 
               }),
           },
+
+          // лоадер для тайпскрипта
           {
             // регулярка для расширения
             test: /\.ts$/,

@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 
 app.action();
 
-$( 'body' ).html( 'Привет мир' );
+$( 'body > .wrapper' ).html( '<p>Привет мир</p>' );
 
 console.log(_);
 console.log($);
