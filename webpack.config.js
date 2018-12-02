@@ -28,7 +28,8 @@ module.exports = {
         shop: './shop',
         profile: './profile',
         index: './index',
-        styles: './styles.scss'
+        styles: './styles.scss',
+        vendor: ['jquery']
     },
 
     // указать куда положить, или указать name в которое он подставит ключ из энтри
@@ -90,6 +91,14 @@ module.exports = {
     // загрузка лоадеров
     module: {
       rules: [
+
+          // зафигачить либы в вендоров в глобальную видимость
+          {
+              test: require.resolve('jquery'),
+              loader: 'expose-loader?$' // тут указывается в какую переменную их положить
+          },
+
+
           // работа с sass
           {
               test: /\.scss$/,
